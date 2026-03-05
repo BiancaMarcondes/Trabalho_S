@@ -8,11 +8,11 @@ const characters = [
         nome: "Guerreiro",
         hp: 1500, maxHp: 1500, def: 50, img: "assets/warrior.png",
         skills: [
-            { key: 'Q', nome: 'Espada Ametista', atkMin: 180, atkMax: 240, cost: 3, color: '#9b59b6', shield: 0.1 },
-            { key: 'W', nome: 'Corte Roxo', atkMin: 220, atkMax: 300, cost: 4, color: '#8e44ad', shield: 0 },
-            { key: 'E', nome: 'Fúria Violeta', atkMin: 400, atkMax: 550, cost: 7, color: '#663399', shield: 0 },
-            { key: 'R', nome: 'Escudo Lazul', atkMin: 50, atkMax: 100, cost: 3, color: '#3498db', shield: 0.7 },
-            { key: 'T', nome: 'Baluarte Azul', atkMin: 20, atkMax: 50, cost: 5, color: '#2980b9', shield: 0.9 }
+            { key: 'Q', nome: 'Espada Ametista', atkMin: 180, atkMax: 240, cost: 3, color: '#9b59b6', shield: 0.1, img: "https://images.unsplash.com/photo-1594911776101-509be04e9545?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'W', nome: 'Corte Roxo', atkMin: 220, atkMax: 300, cost: 4, color: '#8e44ad', shield: 0, img: "https://images.unsplash.com/photo-1552086115-99d75086d421?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'E', nome: 'Fúria Violeta', atkMin: 400, atkMax: 550, cost: 7, color: '#663399', shield: 0, img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'R', nome: 'Escudo Lazul', atkMin: 50, atkMax: 100, cost: 3, color: '#3498db', shield: 0.7, img: "https://images.unsplash.com/photo-1454160869408-59b4b88d7499?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'T', nome: 'Baluarte Azul', atkMin: 20, atkMax: 50, cost: 5, color: '#2980b9', shield: 0.9, img: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=150&h=150&auto=format&fit=crop" }
         ]
     },
     {
@@ -20,11 +20,11 @@ const characters = [
         nome: "Mago",
         hp: 900, maxHp: 900, def: 20, img: "assets/mage.png",
         skills: [
-            { key: 'Q', nome: 'Seta Púrpura', atkMin: 250, atkMax: 350, cost: 3, color: '#9b59b6', shield: 0 },
-            { key: 'W', nome: 'Explosão Astral', atkMin: 450, atkMax: 600, cost: 6, color: '#8e44ad', shield: 0 },
-            { key: 'E', nome: 'Relâmpago Roxo', atkMin: 700, atkMax: 900, cost: 9, color: '#663399', shield: 0 },
-            { key: 'R', nome: 'Mana Shield', atkMin: 20, atkMax: 80, cost: 4, color: '#3498db', shield: 0.8 },
-            { key: 'T', nome: 'Cristal Azul', atkMin: 50, atkMax: 120, cost: 5, color: '#2980b9', shield: 0.95 }
+            { key: 'Q', nome: 'Seta Púrpura', atkMin: 250, atkMax: 350, cost: 3, color: '#9b59b6', shield: 0, img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'W', nome: 'Explosão Astral', atkMin: 450, atkMax: 600, cost: 6, color: '#8e44ad', shield: 0, img: "https://images.unsplash.com/photo-1464802686167-b939a6910659?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'E', nome: 'Relâmpago Roxo', atkMin: 700, atkMax: 900, cost: 9, color: '#663399', shield: 0, img: "https://images.unsplash.com/photo-1534938665420-4193effeabb4?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'R', nome: 'Mana Shield', atkMin: 20, atkMax: 80, cost: 4, color: '#3498db', shield: 0.8, img: "https://images.unsplash.com/photo-1519750157634-b6d493a0f77c?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'T', nome: 'Cristal Azul', atkMin: 50, atkMax: 120, cost: 5, color: '#2980b9', shield: 0.95, img: "https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?q=80&w=150&h=150&auto=format&fit=crop" }
         ]
     },
     {
@@ -32,11 +32,11 @@ const characters = [
         nome: "Arqueiro",
         hp: 1100, maxHp: 1100, def: 30, img: "assets/archer.png",
         skills: [
-            { key: 'Q', nome: 'Tiro de Plasma', atkMin: 140, atkMax: 200, cost: 2, color: '#9b59b6', shield: 0.1 },
-            { key: 'W', nome: 'Dardo Roxo', atkMin: 280, atkMax: 380, cost: 5, color: '#8e44ad', shield: 0 },
-            { key: 'E', nome: 'Chuva de Neon', atkMin: 550, atkMax: 750, cost: 8, color: '#663399', shield: 0.1 },
-            { key: 'R', nome: 'Vento Azul', atkMin: 60, atkMax: 120, cost: 3, color: '#3498db', shield: 0.6 },
-            { key: 'T', nome: 'Manto Glacial', atkMin: 30, atkMax: 60, cost: 5, color: '#2980b9', shield: 0.85 }
+            { key: 'Q', nome: 'Tiro de Plasma', atkMin: 140, atkMax: 200, cost: 2, color: '#9b59b6', shield: 0.1, img: "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'W', nome: 'Dardo Roxo', atkMin: 280, atkMax: 380, cost: 5, color: '#8e44ad', shield: 0, img: "https://images.unsplash.com/photo-1500477846903-f36fc33923fc?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'E', nome: 'Chuva de Neon', atkMin: 550, atkMax: 750, cost: 8, color: '#663399', shield: 0.1, img: "https://images.unsplash.com/photo-1534796633331-85532cb81002?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'R', nome: 'Vento Azul', atkMin: 60, atkMax: 120, cost: 3, color: '#3498db', shield: 0.6, img: "https://images.unsplash.com/photo-1513224502586-d1e602410265?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'T', nome: 'Manto Glacial', atkMin: 30, atkMax: 60, cost: 5, color: '#2980b9', shield: 0.85, img: "https://images.unsplash.com/photo-1502481851512-e9e2529bbbf9?q=80&w=150&h=150&auto=format&fit=crop" }
         ]
     },
     {
@@ -44,11 +44,11 @@ const characters = [
         nome: "Bárbaro",
         hp: 1300, maxHp: 1300, def: 35, img: "https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=200&h=200&auto=format&fit=crop",
         skills: [
-            { key: 'Q', nome: 'Machado Roxo', atkMin: 200, atkMax: 280, cost: 3, color: '#9b59b6', shield: 0 },
-            { key: 'W', nome: 'Gancho Violeta', atkMin: 300, atkMax: 420, cost: 5, color: '#8e44ad', shield: 0 },
-            { key: 'E', nome: 'Golpe Brutal', atkMin: 600, atkMax: 850, cost: 9, color: '#663399', shield: 0.2 },
-            { key: 'R', nome: 'Couro Azul', atkMin: 40, atkMax: 80, cost: 3, color: '#3498db', shield: 0.5 },
-            { key: 'T', nome: 'Grito de Gelo', atkMin: 100, atkMax: 180, cost: 6, color: '#2980b9', shield: 0.8 }
+            { key: 'Q', nome: 'Machado Roxo', atkMin: 200, atkMax: 280, cost: 3, color: '#9b59b6', shield: 0, img: "https://images.unsplash.com/photo-1582234373443-4dc68a8f1541?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'W', nome: 'Gancho Violeta', atkMin: 300, atkMax: 420, cost: 5, color: '#8e44ad', shield: 0, img: "https://images.unsplash.com/photo-1510511459019-5dee995ad3ff?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'E', nome: 'Golpe Brutal', atkMin: 600, atkMax: 850, cost: 9, color: '#663399', shield: 0.2, img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'R', nome: 'Couro Azul', atkMin: 40, atkMax: 80, cost: 3, color: '#3498db', shield: 0.5, img: "https://images.unsplash.com/photo-1550418290-a8d86ad674a6?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'T', nome: 'Grito de Gelo', atkMin: 100, atkMax: 180, cost: 6, color: '#2980b9', shield: 0.8, img: "https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=150&h=150&auto=format&fit=crop" }
         ]
     },
     {
@@ -56,11 +56,11 @@ const characters = [
         nome: "Paladino",
         hp: 1800, maxHp: 1800, def: 70, img: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=200&h=200&auto=format&fit=crop",
         skills: [
-            { key: 'Q', nome: 'Martelo Roxo', atkMin: 120, atkMax: 180, cost: 3, color: '#9b59b6', shield: 0.2 },
-            { key: 'W', nome: 'Selo Violeta', atkMin: 250, atkMax: 350, cost: 5, color: '#8e44ad', shield: 0.3 },
-            { key: 'E', nome: 'Julgamento Roxo', atkMin: 400, atkMax: 600, cost: 8, color: '#663399', shield: 0 },
-            { key: 'R', nome: 'Fé Azul', atkMin: 50, atkMax: 100, cost: 4, color: '#3498db', shield: 0.85 },
-            { key: 'T', nome: 'Aura Celeste', atkMin: 0, atkMax: 50, cost: 6, color: '#2980b9', shield: 0.98 }
+            { key: 'Q', nome: 'Martelo Roxo', atkMin: 120, atkMax: 180, cost: 3, color: '#9b59b6', shield: 0.2, img: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'W', nome: 'Selo Violeta', atkMin: 250, atkMax: 350, cost: 5, color: '#8e44ad', shield: 0.3, img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'E', nome: 'Julgamento Roxo', atkMin: 400, atkMax: 600, cost: 8, color: '#663399', shield: 0, img: "https://images.unsplash.com/photo-1550684847-75bdda21cc95?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'R', nome: 'Fé Azul', atkMin: 50, atkMax: 100, cost: 4, color: '#3498db', shield: 0.85, img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'T', nome: 'Aura Celeste', atkMin: 0, atkMax: 50, cost: 6, color: '#2980b9', shield: 0.98, img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=150&h=150&auto=format&fit=crop" }
         ]
     },
     {
@@ -68,11 +68,11 @@ const characters = [
         nome: "Ninja",
         hp: 850, maxHp: 850, def: 15, img: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=200&h=200&auto=format&fit=crop",
         skills: [
-            { key: 'Q', nome: 'Kunai Roxa', atkMin: 180, atkMax: 250, cost: 2, color: '#9b59b6', shield: 0 },
-            { key: 'W', nome: 'Lâmina Violeta', atkMin: 350, atkMax: 500, cost: 5, color: '#8e44ad', shield: 0 },
-            { key: 'E', nome: 'Dragão Púrpura', atkMin: 750, atkMax: 1000, cost: 10, color: '#663399', shield: 0 },
-            { key: 'R', nome: 'Ilusão Azul', atkMin: 10, atkMax: 50, cost: 4, color: '#3498db', shield: 0.8 },
-            { key: 'T', nome: 'Fuga Ártica', atkMin: 50, atkMax: 100, cost: 6, color: '#2980b9', shield: 0.9 }
+            { key: 'Q', nome: 'Kunai Roxa', atkMin: 180, atkMax: 250, cost: 2, color: '#9b59b6', shield: 0, img: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'W', nome: 'Lâmina Violeta', atkMin: 350, atkMax: 500, cost: 5, color: '#8e44ad', shield: 0, img: "https://images.unsplash.com/photo-1582234373443-4dc68a8f1541?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'E', nome: 'Dragão Púrpura', atkMin: 750, atkMax: 1000, cost: 10, color: '#663399', shield: 0, img: "https://images.unsplash.com/photo-1504333638930-c8787321eba0?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'R', nome: 'Ilusão Azul', atkMin: 10, atkMax: 50, cost: 4, color: '#3498db', shield: 0.8, img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=150&h=150&auto=format&fit=crop" },
+            { key: 'T', nome: 'Fuga Ártica', atkMin: 50, atkMax: 100, cost: 6, color: '#2980b9', shield: 0.9, img: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=150&h=150&auto=format&fit=crop" }
         ]
     }
 ];
@@ -213,7 +213,7 @@ function renderSkills() {
         card.className = 'skill-card';
         card.innerHTML = `
             <div class="elixir-cost">${skill.cost}</div>
-            <div class="skill-icon" style="background-image: url('${player.img}')"></div>
+            <div class="skill-icon" style="background-image: url('${skill.img}')"></div>
             <span class="skill-card-name">${skill.nome}</span>
         `;
         card.onclick = () => handlePlayerAction(skill);
@@ -240,9 +240,9 @@ function handlePlayerAction(skill) {
     playerElixir -= skill.cost;
     updateElixirUI();
 
-    // Apply Shield momentarily
+    // Apply Shield momentarily with dynamic color (Blue for defenses)
     playerShield = skill.shield;
-    toggleShieldVisual('player', true);
+    toggleShieldVisual('player', true, skill.color);
     setTimeout(() => {
         playerShield = 0;
         toggleShieldVisual('player', false);
@@ -259,7 +259,7 @@ function handleCpuAction(skill) {
     updateElixirUI();
 
     cpuShield = skill.shield;
-    toggleShieldVisual('cpu', true);
+    toggleShieldVisual('cpu', true, skill.color);
     setTimeout(() => {
         cpuShield = 0;
         toggleShieldVisual('cpu', false);
@@ -269,11 +269,17 @@ function handleCpuAction(skill) {
     checkWin();
 }
 
-function toggleShieldVisual(type, show) {
+function toggleShieldVisual(type, show, color) {
     const el = document.querySelector(`.${type} .shield-vfx`);
     if (el) {
-        if (show) el.classList.add('shield-active');
-        else el.classList.remove('shield-active');
+        if (show) {
+            el.style.borderColor = color;
+            el.style.boxShadow = `0 0 30px ${color}, inset 0 0 20px ${color}`;
+            el.style.background = `radial-gradient(circle, transparent 40%, ${color}33 100%)`; // 33 is hex for 20% opacity
+            el.classList.add('shield-active');
+        } else {
+            el.classList.remove('shield-active');
+        }
     }
 }
 
