@@ -11,9 +11,9 @@ const characters = [
         def: 50,
         img: "assets/warrior.png",
         skills: [
-            { key: 'Q', nome: 'Espada de Elite', atkMin: 150, atkMax: 220, cost: 3, color: '#ff4d4d' },
-            { key: 'W', nome: 'Salto Impactante', atkMin: 200, atkMax: 300, cost: 5, color: '#ffd700' },
-            { key: 'E', nome: 'Fúria Real', atkMin: 350, atkMax: 500, cost: 7, color: '#ff8c00' }
+            { key: 'Q', nome: 'Espada de Elite', atkMin: 150, atkMax: 220, cost: 3, color: '#ff4d4d', shield: 0.2 },
+            { key: 'W', nome: 'Escudo Justiceiro', atkMin: 100, atkMax: 150, cost: 4, color: '#00f2ff', shield: 0.6 },
+            { key: 'E', nome: 'Fúria Real', atkMin: 350, atkMax: 500, cost: 7, color: '#ff8c00', shield: 0.1 }
         ]
     },
     {
@@ -24,9 +24,9 @@ const characters = [
         def: 20,
         img: "assets/mage.png",
         skills: [
-            { key: 'Q', nome: 'Seta de Gelo', atkMin: 200, atkMax: 300, cost: 3, color: '#4d94ff' },
-            { key: 'W', nome: 'Bola de Fogo', atkMin: 400, atkMax: 550, cost: 6, color: '#ff4b2b' },
-            { key: 'E', nome: 'Relâmpago', atkMin: 600, atkMax: 800, cost: 9, color: '#8a2be2' }
+            { key: 'Q', nome: 'Seta de Gelo', atkMin: 200, atkMax: 300, cost: 3, color: '#4d94ff', shield: 0.1 },
+            { key: 'W', nome: 'Barreira Arcana', atkMin: 150, atkMax: 200, cost: 5, color: '#00f2ff', shield: 0.7 },
+            { key: 'E', nome: 'Relâmpago', atkMin: 600, atkMax: 800, cost: 9, color: '#8a2be2', shield: 0 }
         ]
     },
     {
@@ -37,9 +37,9 @@ const characters = [
         def: 30,
         img: "assets/archer.png",
         skills: [
-            { key: 'Q', nome: 'Duo de Flechas', atkMin: 120, atkMax: 180, cost: 2, color: '#32cd32' },
-            { key: 'W', nome: 'Flecha Mágica', atkMin: 250, atkMax: 400, cost: 5, color: '#9932cc' },
-            { key: 'E', nome: 'Foguete Corredor', atkMin: 500, atkMax: 700, cost: 8, color: '#ffd700' }
+            { key: 'Q', nome: 'Duo de Flechas', atkMin: 120, atkMax: 180, cost: 2, color: '#32cd32', shield: 0.1 },
+            { key: 'W', nome: 'Esquiva Rápida', atkMin: 100, atkMax: 150, cost: 4, color: '#00f2ff', shield: 0.5 },
+            { key: 'E', nome: 'Foguete Corredor', atkMin: 500, atkMax: 700, cost: 8, color: '#ffd700', shield: 0.2 }
         ]
     }
 ];
@@ -50,6 +50,8 @@ let cpu = null;
 let isBattleOver = false;
 let isPlayerTurn = true;
 let currentElixir = 5;
+let playerShield = 0; // Current damage reduction
+let cpuShield = 0;
 const MAX_ELIXIR = 10;
 
 // DOM Elements
@@ -109,6 +111,8 @@ function startBattle() {
     isPlayerTurn = true;
     isBattleOver = false;
     currentElixir = 5;
+    playerShield = 0;
+    cpuShield = 0;
 
     document.getElementById('p-name').textContent = player.nome;
     document.getElementById('p-portrait').src = player.img;
@@ -180,6 +184,10 @@ function handlePlayerAction(skill) {
     currentElixir -= skill.cost;
     updateElixirUI();
 
+    // Apply Shield for this turn
+    playerShield = skill.shield;
+    if (playerShield > 0) toggleShieldVisual('player', true);
+
     executeAttack(player, cpu, skill);
 
     if (checkWin()) return;
@@ -189,10 +197,25 @@ function handlePlayerAction(skill) {
     setTimeout(() => {
         if (!isBattleOver) {
             const cpuSkill = cpu.skills[Math.floor(Math.random() * cpu.skills.length)];
+            cpuShield = cpuSkill.shield;
+            if (cpuShield > 0) toggleShieldVisual('cpu', true);
+
             executeAttack(cpu, player, cpuSkill);
+
+            // Remove shields after the exchange
+            toggleShieldVisual('player', false);
+            toggleShieldVisual('cpu', false);
+            playerShield = 0;
+            cpuShield = 0;
+
             if (!checkWin()) setTurn(true);
         }
     }, 1200);
+}
+
+function toggleShieldVisual(type, show) {
+    const el = document.querySelector(`.${type} .shield-vfx`);
+    if (el) el.classList.toggle('shield-active', show);
 }
 
 function setTurn(playerTurn) {
@@ -202,7 +225,11 @@ function setTurn(playerTurn) {
 
 function executeAttack(attacker, defender, skill) {
     const rawAtk = Math.floor(Math.random() * (skill.atkMax - skill.atkMin + 1)) + skill.atkMin;
-    const damage = Math.max(20, rawAtk - defender.def);
+
+    // Apply current shield to damage
+    const activeShield = defender === player ? playerShield : cpuShield;
+    const reducedAtk = rawAtk * (1 - activeShield);
+    const damage = Math.max(20, reducedAtk - defender.def);
 
     defender.currentHp = Math.max(0, defender.currentHp - damage);
 

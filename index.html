@@ -38,17 +38,25 @@
         <!-- Battle Screen -->
         <section id="battle-screen" class="hidden">
             <div class="arena-field">
-                <!-- Top Side (CPU) -->
+                <!-- CPU Side -->
                 <div class="fighter cpu" id="cpu-fighter">
                     <div class="hp-bar-container">
                         <div class="hp-bar" id="c-hp-bar"></div>
                     </div>
-                    <img src="" alt="CPU" id="c-portrait" class="fighter-img">
+                    <div class="portrait-container">
+                        <div class="shield-vfx"></div>
+                        <img src="" alt="CPU" id="c-portrait" class="fighter-img">
+                    </div>
+                    <span class="fighter-name" id="c-name">CPU</span>
                 </div>
 
-                <!-- Bottom Side (Player) -->
+                <!-- Player Side -->
                 <div class="fighter player" id="player-fighter">
-                    <img src="" alt="Player" id="p-portrait" class="fighter-img">
+                    <span class="fighter-name" id="p-name">PLAYER</span>
+                    <div class="portrait-container">
+                        <div class="shield-vfx"></div>
+                        <img src="" alt="Player" id="p-portrait" class="fighter-img">
+                    </div>
                     <div class="hp-bar-container">
                         <div class="hp-bar" id="p-hp-bar"></div>
                     </div>
