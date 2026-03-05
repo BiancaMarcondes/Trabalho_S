@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle Arena Web | Desafio Épico</title>
+    <meta name="description" content="Enfrente oponentes épicos em uma arena de combate por turnos diretamente no seu navegador. Escolha seu herói e vença!">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <header>
+        <h1 class="glow-text">BATTLE ARENA</h1>
+        <p class="subtitle">Escolha seu destino, conquiste a glória</p>
+    </header>
+
+    <main id="app">
+        <!-- Selection Screen -->
+        <section id="selection-screen" class="active">
+            <h2 class="section-title">Selecione seu Herói</h2>
+            <div id="character-grid" class="grid-container">
+                <!-- Cards injected via JS -->
+            </div>
+        </section>
+
+        <!-- Battle Screen -->
+        <section id="battle-screen" class="hidden">
+            <div class="arena">
+                <div class="fighter player" id="player-fighter">
+                    <div class="stats-box">
+                        <span class="fighter-name" id="p-name">Herói</span>
+                        <div class="hp-bar-container">
+                            <div class="hp-bar" id="p-hp-bar"></div>
+                            <span class="hp-text" id="p-hp-text">100/100</span>
+                        </div>
+                    </div>
+                    <div class="portrait-container">
+                        <img src="" alt="Player Hero" id="p-portrait" class="fighter-img">
+                    </div>
+                </div>
+
+                <div class="vs-badge">VS</div>
+
+                <div class="fighter cpu" id="cpu-fighter">
+                    <div class="stats-box">
+                        <span class="fighter-name" id="c-name">Oponente</span>
+                        <div class="hp-bar-container">
+                            <div class="hp-bar" id="c-hp-bar"></div>
+                            <span class="hp-text" id="c-hp-text">100/100</span>
+                        </div>
+                    </div>
+                    <div class="portrait-container">
+                        <img src="" alt="CPU Hero" id="c-portrait" class="fighter-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="attack-btn" class="btn primary-btn">ATACAR</button>
+                <div id="combat-log" class="log-container">
+                    <p>A batalha começou!</p>
+                </div>
+                <button id="reset-btn" class="btn secondary-btn hidden">NOVO JOGO</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Battle Arena Web. Feito para heróis.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
