@@ -6,79 +6,73 @@ const characters = [
     {
         id: 1,
         nome: "Guerreiro",
-        hp: 1500,
-        maxHp: 1500,
-        def: 50,
-        img: "assets/warrior.png",
+        hp: 1500, maxHp: 1500, def: 50, img: "assets/warrior.png",
         skills: [
-            { key: 'Q', nome: 'Lâmina Ametista', atkMin: 150, atkMax: 220, cost: 3, color: '#9b59b6', shield: 0.2 },
-            { key: 'W', nome: 'Baluarte Real', atkMin: 100, atkMax: 150, cost: 4, color: '#8e44ad', shield: 0.8 },
-            { key: 'E', nome: 'Impacto Roxo', atkMin: 350, atkMax: 500, cost: 7, color: '#bf94e4', shield: 0.1 }
+            { key: 'Q', nome: 'Espada Ametista', atkMin: 180, atkMax: 240, cost: 3, color: '#9b59b6', shield: 0.1 },
+            { key: 'W', nome: 'Corte Roxo', atkMin: 220, atkMax: 300, cost: 4, color: '#8e44ad', shield: 0 },
+            { key: 'E', nome: 'Fúria Violeta', atkMin: 400, atkMax: 550, cost: 7, color: '#663399', shield: 0 },
+            { key: 'R', nome: 'Escudo Lazul', atkMin: 50, atkMax: 100, cost: 3, color: '#3498db', shield: 0.7 },
+            { key: 'T', nome: 'Baluarte Azul', atkMin: 20, atkMax: 50, cost: 5, color: '#2980b9', shield: 0.9 }
         ]
     },
     {
         id: 2,
         nome: "Mago",
-        hp: 900,
-        maxHp: 900,
-        def: 20,
-        img: "assets/mage.png",
+        hp: 900, maxHp: 900, def: 20, img: "assets/mage.png",
         skills: [
-            { key: 'Q', nome: 'Orbe Violeta', atkMin: 200, atkMax: 300, cost: 3, color: '#9b59b6', shield: 0.1 },
-            { key: 'W', nome: 'Domínio Arcano', atkMin: 150, atkMax: 200, cost: 5, color: '#8e44ad', shield: 0.85 },
-            { key: 'E', nome: 'Tempestade Roxa', atkMin: 600, atkMax: 800, cost: 9, color: '#663399', shield: 0 }
+            { key: 'Q', nome: 'Seta Púrpura', atkMin: 250, atkMax: 350, cost: 3, color: '#9b59b6', shield: 0 },
+            { key: 'W', nome: 'Explosão Astral', atkMin: 450, atkMax: 600, cost: 6, color: '#8e44ad', shield: 0 },
+            { key: 'E', nome: 'Relâmpago Roxo', atkMin: 700, atkMax: 900, cost: 9, color: '#663399', shield: 0 },
+            { key: 'R', nome: 'Mana Shield', atkMin: 20, atkMax: 80, cost: 4, color: '#3498db', shield: 0.8 },
+            { key: 'T', nome: 'Cristal Azul', atkMin: 50, atkMax: 120, cost: 5, color: '#2980b9', shield: 0.95 }
         ]
     },
     {
         id: 3,
         nome: "Arqueiro",
-        hp: 1100,
-        maxHp: 1100,
-        def: 30,
-        img: "assets/archer.png",
+        hp: 1100, maxHp: 1100, def: 30, img: "assets/archer.png",
         skills: [
-            { key: 'Q', nome: 'Flecha de Plasma', atkMin: 120, atkMax: 180, cost: 2, color: '#9b59b6', shield: 0.1 },
-            { key: 'W', nome: 'Manto de Sombras', atkMin: 100, atkMax: 150, cost: 4, color: '#8e44ad', shield: 0.7 },
-            { key: 'E', nome: 'Chuva Purpúrea', atkMin: 500, atkMax: 700, cost: 8, color: '#bf94e4', shield: 0.2 }
+            { key: 'Q', nome: 'Tiro de Plasma', atkMin: 140, atkMax: 200, cost: 2, color: '#9b59b6', shield: 0.1 },
+            { key: 'W', nome: 'Dardo Roxo', atkMin: 280, atkMax: 380, cost: 5, color: '#8e44ad', shield: 0 },
+            { key: 'E', nome: 'Chuva de Neon', atkMin: 550, atkMax: 750, cost: 8, color: '#663399', shield: 0.1 },
+            { key: 'R', nome: 'Vento Azul', atkMin: 60, atkMax: 120, cost: 3, color: '#3498db', shield: 0.6 },
+            { key: 'T', nome: 'Manto Glacial', atkMin: 30, atkMax: 60, cost: 5, color: '#2980b9', shield: 0.85 }
         ]
     },
     {
         id: 4,
         nome: "Bárbaro",
-        hp: 1300,
-        maxHp: 1300,
-        def: 35,
-        img: "https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=200&h=200&auto=format&fit=crop",
+        hp: 1300, maxHp: 1300, def: 35, img: "https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=200&h=200&auto=format&fit=crop",
         skills: [
-            { key: 'Q', nome: 'Fúria Púrpura', atkMin: 180, atkMax: 250, cost: 3, color: '#9b59b6', shield: 0.2 },
-            { key: 'W', nome: 'Rugido Blindado', atkMin: 50, atkMax: 100, cost: 4, color: '#8e44ad', shield: 0.65 },
-            { key: 'E', nome: 'Golpe Esmagador', atkMin: 400, atkMax: 600, cost: 8, color: '#663399', shield: 0.3 }
+            { key: 'Q', nome: 'Machado Roxo', atkMin: 200, atkMax: 280, cost: 3, color: '#9b59b6', shield: 0 },
+            { key: 'W', nome: 'Gancho Violeta', atkMin: 300, atkMax: 420, cost: 5, color: '#8e44ad', shield: 0 },
+            { key: 'E', nome: 'Golpe Brutal', atkMin: 600, atkMax: 850, cost: 9, color: '#663399', shield: 0.2 },
+            { key: 'R', nome: 'Couro Azul', atkMin: 40, atkMax: 80, cost: 3, color: '#3498db', shield: 0.5 },
+            { key: 'T', nome: 'Grito de Gelo', atkMin: 100, atkMax: 180, cost: 6, color: '#2980b9', shield: 0.8 }
         ]
     },
     {
         id: 5,
         nome: "Paladino",
-        hp: 1800,
-        maxHp: 1800,
-        def: 70,
-        img: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=200&h=200&auto=format&fit=crop",
+        hp: 1800, maxHp: 1800, def: 70, img: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=200&h=200&auto=format&fit=crop",
         skills: [
-            { key: 'Q', nome: 'Selo Sagrado', atkMin: 100, atkMax: 160, cost: 2, color: '#9b59b6', shield: 0.35 },
-            { key: 'W', nome: 'Redenção Roxa', atkMin: 80, atkMax: 120, cost: 5, color: '#8e44ad', shield: 0.95 },
-            { key: 'E', nome: 'Luz Ametista', atkMin: 300, atkMax: 450, cost: 7, color: '#bf94e4', shield: 0.45 }
+            { key: 'Q', nome: 'Martelo Roxo', atkMin: 120, atkMax: 180, cost: 3, color: '#9b59b6', shield: 0.2 },
+            { key: 'W', nome: 'Selo Violeta', atkMin: 250, atkMax: 350, cost: 5, color: '#8e44ad', shield: 0.3 },
+            { key: 'E', nome: 'Julgamento Roxo', atkMin: 400, atkMax: 600, cost: 8, color: '#663399', shield: 0 },
+            { key: 'R', nome: 'Fé Azul', atkMin: 50, atkMax: 100, cost: 4, color: '#3498db', shield: 0.85 },
+            { key: 'T', nome: 'Aura Celeste', atkMin: 0, atkMax: 50, cost: 6, color: '#2980b9', shield: 0.98 }
         ]
     },
     {
         id: 6,
         nome: "Ninja",
-        hp: 850,
-        maxHp: 850,
-        def: 15,
-        img: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=200&h=200&auto=format&fit=crop",
+        hp: 850, maxHp: 850, def: 15, img: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=200&h=200&auto=format&fit=crop",
         skills: [
-            { key: 'Q', nome: 'Kunai Sombria', atkMin: 150, atkMax: 200, cost: 2, color: '#9b59b6', shield: 0.15 },
-            { key: 'W', nome: 'Névoa Violeta', atkMin: 250, atkMax: 350, cost: 5, color: '#8e44ad', shield: 0.75 },
-            { key: 'E', nome: 'Execução Final', atkMin: 700, atkMax: 950, cost: 10, color: '#663399', shield: 0 }
+            { key: 'Q', nome: 'Kunai Roxa', atkMin: 180, atkMax: 250, cost: 2, color: '#9b59b6', shield: 0 },
+            { key: 'W', nome: 'Lâmina Violeta', atkMin: 350, atkMax: 500, cost: 5, color: '#8e44ad', shield: 0 },
+            { key: 'E', nome: 'Dragão Púrpura', atkMin: 750, atkMax: 1000, cost: 10, color: '#663399', shield: 0 },
+            { key: 'R', nome: 'Ilusão Azul', atkMin: 10, atkMax: 50, cost: 4, color: '#3498db', shield: 0.8 },
+            { key: 'T', nome: 'Fuga Ártica', atkMin: 50, atkMax: 100, cost: 6, color: '#2980b9', shield: 0.9 }
         ]
     }
 ];
