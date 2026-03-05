@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle Arena Web | Desafio Épico</title>
-    <meta name="description" content="Enfrente oponentes épicos em uma arena de combate por turnos diretamente no seu navegador. Escolha seu herói e vença!">
-    
+    <meta name="description"
+        content="Enfrente oponentes épicos em uma arena de combate por turnos diretamente no seu navegador. Escolha seu herói e vença!">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;600;800&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="background-overlay"></div>
-    
+
     <header>
         <h1 class="glow-text">BATTLE ARENA</h1>
         <p class="subtitle">Escolha seu destino, conquiste a glória</p>
@@ -63,7 +67,9 @@
             </div>
 
             <div class="controls">
-                <button id="attack-btn" class="btn primary-btn">ATACAR</button>
+                <div id="skills-container" class="skills-grid">
+                    <!-- Skills will be injected here -->
+                </div>
                 <div id="combat-log" class="log-container">
                     <p>A batalha começou!</p>
                 </div>
@@ -78,4 +84,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
