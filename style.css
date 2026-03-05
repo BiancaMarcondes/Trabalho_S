@@ -1,15 +1,19 @@
 :root {
-    --primary: #ff4d4d;
-    --primary-glow: rgba(255, 77, 77, 0.5);
-    --secondary: #4d94ff;
-    --accent: #ffd700;
+    --primary: #9b59b6;
+    /* Purple base */
+    --primary-glow: rgba(155, 89, 182, 0.5);
+    --secondary: #8e44ad;
+    /* Darker Purple */
+    --accent: #bf94e4;
+    /* Light Purple/Amethyst */
     --bg-dark: #0a0a0c;
     --card-bg: rgba(255, 255, 255, 0.05);
     --text-main: #f0f0f0;
     --text-muted: #a0a0a0;
     --glass: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.1);
-    --elixir: #ff00ff;
+    --elixir: #8e44ad;
+    /* Purple Elixir */
 }
 
 * {
@@ -196,6 +200,42 @@ body {
     box-shadow: 0 0 25px rgba(255, 77, 77, 0.4);
 }
 
+/* Premium Header & Title */
+header {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--glass-border);
+    position: relative;
+    z-index: 100;
+}
+
+.logo-small {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px var(--primary-glow));
+    animation: titlePulse 2s infinite alternate;
+}
+
+@keyframes titlePulse {
+    from {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px var(--primary-glow));
+    }
+
+    to {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 25px var(--primary-glow));
+    }
+}
+
 .hp-bar-container {
     width: 140px;
     height: 10px;
@@ -216,7 +256,7 @@ body {
     background: linear-gradient(90deg, #e74c3c, #c0392b);
 }
 
-/* Shield Visual FX */
+/* Shield Visual FX - Now Purple */
 .shield-vfx {
     position: absolute;
     top: 0;
@@ -224,9 +264,9 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 100%;
-    border: 5px solid #00f2ff;
-    background: radial-gradient(circle, transparent 40%, rgba(0, 242, 255, 0.2) 100%);
-    box-shadow: 0 0 25px #00f2ff, inset 0 0 20px #00f2ff;
+    border: 5px solid var(--accent);
+    background: radial-gradient(circle, transparent 40%, rgba(191, 148, 228, 0.3) 100%);
+    box-shadow: 0 0 30px var(--primary), inset 0 0 20px var(--primary);
     z-index: 10;
     opacity: 0;
     transition: all 0.3s ease;
@@ -250,11 +290,19 @@ body {
     }
 }
 
-/* Elixir Bar (Premium) */
+/* Elixir System (Premium) */
 .elixir-container {
     height: 8px;
     background: rgba(255, 255, 255, 0.05);
     width: 100%;
+}
+
+.cpu-elixir {
+    width: 120px;
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: -5px;
 }
 
 .elixir-bar {

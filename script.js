@@ -11,9 +11,9 @@ const characters = [
         def: 50,
         img: "assets/warrior.png",
         skills: [
-            { key: 'Q', nome: 'Espada de Elite', atkMin: 150, atkMax: 220, cost: 3, color: '#ff4d4d', shield: 0.2 },
-            { key: 'W', nome: 'Escudo Justiceiro', atkMin: 100, atkMax: 150, cost: 4, color: '#00f2ff', shield: 0.7 },
-            { key: 'E', nome: 'Fúria Real', atkMin: 350, atkMax: 500, cost: 7, color: '#ff8c00', shield: 0.1 }
+            { key: 'Q', nome: 'Lâmina Ametista', atkMin: 150, atkMax: 220, cost: 3, color: '#9b59b6', shield: 0.2 },
+            { key: 'W', nome: 'Baluarte Real', atkMin: 100, atkMax: 150, cost: 4, color: '#8e44ad', shield: 0.8 },
+            { key: 'E', nome: 'Impacto Roxo', atkMin: 350, atkMax: 500, cost: 7, color: '#bf94e4', shield: 0.1 }
         ]
     },
     {
@@ -24,9 +24,9 @@ const characters = [
         def: 20,
         img: "assets/mage.png",
         skills: [
-            { key: 'Q', nome: 'Seta de Gelo', atkMin: 200, atkMax: 300, cost: 3, color: '#4d94ff', shield: 0.1 },
-            { key: 'W', nome: 'Barreira Arcana', atkMin: 150, atkMax: 200, cost: 5, color: '#00f2ff', shield: 0.8 },
-            { key: 'E', nome: 'Relâmpago', atkMin: 600, atkMax: 800, cost: 9, color: '#8a2be2', shield: 0 }
+            { key: 'Q', nome: 'Orbe Violeta', atkMin: 200, atkMax: 300, cost: 3, color: '#9b59b6', shield: 0.1 },
+            { key: 'W', nome: 'Domínio Arcano', atkMin: 150, atkMax: 200, cost: 5, color: '#8e44ad', shield: 0.85 },
+            { key: 'E', nome: 'Tempestade Roxa', atkMin: 600, atkMax: 800, cost: 9, color: '#663399', shield: 0 }
         ]
     },
     {
@@ -37,9 +37,48 @@ const characters = [
         def: 30,
         img: "assets/archer.png",
         skills: [
-            { key: 'Q', nome: 'Duo de Flechas', atkMin: 120, atkMax: 180, cost: 2, color: '#32cd32', shield: 0.1 },
-            { key: 'W', nome: 'Esquiva Mestra', atkMin: 100, atkMax: 150, cost: 4, color: '#00f2ff', shield: 0.6 },
-            { key: 'E', nome: 'Foguete Corredor', atkMin: 500, atkMax: 700, cost: 8, color: '#ffd700', shield: 0.2 }
+            { key: 'Q', nome: 'Flecha de Plasma', atkMin: 120, atkMax: 180, cost: 2, color: '#9b59b6', shield: 0.1 },
+            { key: 'W', nome: 'Manto de Sombras', atkMin: 100, atkMax: 150, cost: 4, color: '#8e44ad', shield: 0.7 },
+            { key: 'E', nome: 'Chuva Purpúrea', atkMin: 500, atkMax: 700, cost: 8, color: '#bf94e4', shield: 0.2 }
+        ]
+    },
+    {
+        id: 4,
+        nome: "Bárbaro",
+        hp: 1300,
+        maxHp: 1300,
+        def: 35,
+        img: "https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=200&h=200&auto=format&fit=crop",
+        skills: [
+            { key: 'Q', nome: 'Fúria Púrpura', atkMin: 180, atkMax: 250, cost: 3, color: '#9b59b6', shield: 0.2 },
+            { key: 'W', nome: 'Rugido Blindado', atkMin: 50, atkMax: 100, cost: 4, color: '#8e44ad', shield: 0.65 },
+            { key: 'E', nome: 'Golpe Esmagador', atkMin: 400, atkMax: 600, cost: 8, color: '#663399', shield: 0.3 }
+        ]
+    },
+    {
+        id: 5,
+        nome: "Paladino",
+        hp: 1800,
+        maxHp: 1800,
+        def: 70,
+        img: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=200&h=200&auto=format&fit=crop",
+        skills: [
+            { key: 'Q', nome: 'Selo Sagrado', atkMin: 100, atkMax: 160, cost: 2, color: '#9b59b6', shield: 0.35 },
+            { key: 'W', nome: 'Redenção Roxa', atkMin: 80, atkMax: 120, cost: 5, color: '#8e44ad', shield: 0.95 },
+            { key: 'E', nome: 'Luz Ametista', atkMin: 300, atkMax: 450, cost: 7, color: '#bf94e4', shield: 0.45 }
+        ]
+    },
+    {
+        id: 6,
+        nome: "Ninja",
+        hp: 850,
+        maxHp: 850,
+        def: 15,
+        img: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=200&h=200&auto=format&fit=crop",
+        skills: [
+            { key: 'Q', nome: 'Kunai Sombria', atkMin: 150, atkMax: 200, cost: 2, color: '#9b59b6', shield: 0.15 },
+            { key: 'W', nome: 'Névoa Violeta', atkMin: 250, atkMax: 350, cost: 5, color: '#8e44ad', shield: 0.75 },
+            { key: 'E', nome: 'Execução Final', atkMin: 700, atkMax: 950, cost: 10, color: '#663399', shield: 0 }
         ]
     }
 ];
@@ -48,9 +87,9 @@ const characters = [
 let player = null;
 let cpu = null;
 let isBattleOver = false;
-let isPlayerTurn = true;
-let currentElixir = 5;
-let playerShield = 0; // Current damage reduction
+let playerElixir = 5;
+let cpuElixir = 5;
+let playerShield = 0;
 let cpuShield = 0;
 const MAX_ELIXIR = 10;
 
@@ -59,7 +98,8 @@ const selectionScreen = document.getElementById('selection-screen');
 const battleScreen = document.getElementById('battle-screen');
 const characterGrid = document.getElementById('character-grid');
 const skillsContainer = document.getElementById('skills-container');
-const elixirBar = document.getElementById('elixir-bar');
+const pElixirBar = document.getElementById('elixir-bar');
+const cElixirBar = document.getElementById('cpu-elixir-bar');
 const resetBtn = document.getElementById('reset-btn');
 const overlayResetBtn = document.getElementById('overlay-reset-btn');
 const resultOverlay = document.getElementById('result-overlay');
@@ -111,9 +151,9 @@ function startBattle() {
     selectionScreen.classList.remove('active');
     selectionScreen.classList.add('hidden');
     battleScreen.classList.remove('hidden');
-    isPlayerTurn = true;
     isBattleOver = false;
-    currentElixir = 5;
+    playerElixir = 5;
+    cpuElixir = 5;
     playerShield = 0;
     cpuShield = 0;
 
@@ -124,29 +164,48 @@ function startBattle() {
 
     renderSkills();
     updateHpBars();
-    startElixirRegen();
+    startCombatLoops();
 }
 
-function startElixirRegen() {
+function startCombatLoops() {
+    // Elixir Regeneration Loop
     const regen = setInterval(() => {
         if (isBattleOver) {
             clearInterval(regen);
             return;
         }
-        if (currentElixir < MAX_ELIXIR) {
-            currentElixir = Math.min(MAX_ELIXIR, currentElixir + 0.1);
-            updateElixirUI();
-        }
+
+        if (playerElixir < MAX_ELIXIR) playerElixir = Math.min(MAX_ELIXIR, playerElixir + 0.15);
+        if (cpuElixir < MAX_ELIXIR) cpuElixir = Math.min(MAX_ELIXIR, cpuElixir + 0.15);
+
+        updateElixirUI();
     }, 100);
+
+    // CPU AI Loop
+    const cpuAction = setInterval(() => {
+        if (isBattleOver) {
+            clearInterval(cpuAction);
+            return;
+        }
+
+        // Logical choice: use most expensive skill available
+        const possibleSkills = cpu.skills.filter(s => cpuElixir >= s.cost);
+        if (possibleSkills.length > 0) {
+            const skill = possibleSkills.reduce((prev, current) => (prev.cost > current.cost) ? prev : current);
+            handleCpuAction(skill);
+        }
+    }, 1500); // CPU checks for attacks every 1.5s
 }
 
 function updateElixirUI() {
-    elixirBar.style.width = (currentElixir / MAX_ELIXIR) * 100 + '%';
+    pElixirBar.style.width = (playerElixir / MAX_ELIXIR) * 100 + '%';
+    cElixirBar.style.width = (cpuElixir / MAX_ELIXIR) * 100 + '%';
+
     // Check which cards are playable
     const cards = document.querySelectorAll('.skill-card');
     cards.forEach((card, index) => {
         const skill = player.skills[index];
-        card.disabled = !isPlayerTurn || currentElixir < skill.cost;
+        card.disabled = playerElixir < skill.cost;
     });
 }
 
@@ -172,50 +231,48 @@ function renderSkills() {
  * Keyboard Listeners
  */
 window.addEventListener('keydown', (e) => {
-    if (!isPlayerTurn || isBattleOver) return;
+    if (isBattleOver) return;
     const key = e.key.toUpperCase();
     const skill = player.skills.find(s => s.key === key);
-    if (skill && currentElixir >= skill.cost) {
+    if (skill && playerElixir >= skill.cost) {
         e.preventDefault();
         handlePlayerAction(skill);
     }
 }, true);
 
 function handlePlayerAction(skill) {
-    if (!isPlayerTurn || isBattleOver || currentElixir < skill.cost) return;
+    if (isBattleOver || playerElixir < skill.cost) return;
 
-    currentElixir -= skill.cost;
+    playerElixir -= skill.cost;
     updateElixirUI();
 
-    // Apply Shield for this turn
+    // Apply Shield momentarily
     playerShield = skill.shield;
-    if (playerShield > 0) toggleShieldVisual('player', true);
+    toggleShieldVisual('player', true);
+    setTimeout(() => {
+        playerShield = 0;
+        toggleShieldVisual('player', false);
+    }, 1000);
 
     executeAttack(player, cpu, skill);
+    checkWin();
+}
 
-    if (checkWin()) return;
+function handleCpuAction(skill) {
+    if (isBattleOver || cpuElixir < skill.cost) return;
 
-    // CPU Turn
-    setTurn(false);
+    cpuElixir -= skill.cost;
+    updateElixirUI();
+
+    cpuShield = skill.shield;
+    toggleShieldVisual('cpu', true);
     setTimeout(() => {
-        if (!isBattleOver) {
-            const cpuSkill = cpu.skills[Math.floor(Math.random() * cpu.skills.length)];
-            cpuShield = cpuSkill.shield;
-            if (cpuShield > 0) toggleShieldVisual('cpu', true);
+        cpuShield = 0;
+        toggleShieldVisual('cpu', false);
+    }, 1000);
 
-            executeAttack(cpu, player, cpuSkill);
-
-            // Re-enable player controls after short delay
-            setTimeout(() => {
-                // Remove shields AFTER the total interaction
-                toggleShieldVisual('player', false);
-                toggleShieldVisual('cpu', false);
-                playerShield = 0;
-                cpuShield = 0;
-                if (!checkWin()) setTurn(true);
-            }, 500);
-        }
-    }, 1200);
+    executeAttack(cpu, player, skill);
+    checkWin();
 }
 
 function toggleShieldVisual(type, show) {
