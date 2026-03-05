@@ -75,11 +75,14 @@ function initSelection() {
         const card = document.createElement('div');
         card.className = 'char-card';
         card.innerHTML = `
-            <img src="${char.img}" alt="${char.nome}">
-            <h3>${char.nome}</h3>
-            <div class="char-stats">
-                <div class="stat-item">HP: <span>${char.maxHp}</span></div>
-                <div class="stat-item">DEF: <span>${char.def}</span></div>
+            <div class="card-img-wrapper">
+                <img src="${char.img}" alt="${char.nome}">
+            </div>
+            <div class="card-info">
+                <h3>${char.nome}</h3>
+                <div class="char-stats">
+                    <span>HP: ${char.maxHp}</span> | <span>DEF: ${char.def}</span>
+                </div>
             </div>
         `;
         card.onclick = () => selectCharacter(char.id);
