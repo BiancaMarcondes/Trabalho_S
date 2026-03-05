@@ -391,11 +391,14 @@ h1.glow-text {
 }
 
 .secondary-btn:hover {
-    background: white;
-    color: black;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
 }
 
-/* Animation utilities */
+.defeat-text {
+    color: var(--primary);
+    filter: drop-shadow(0 0 20px var(--primary-glow));
+}
+
 .shake {
     animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
 }

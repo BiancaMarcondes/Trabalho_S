@@ -59,6 +59,9 @@ const battleScreen = document.getElementById('battle-screen');
 const characterGrid = document.getElementById('character-grid');
 const skillsContainer = document.getElementById('skills-container');
 const resetBtn = document.getElementById('reset-btn');
+const overlayResetBtn = document.getElementById('overlay-reset-btn');
+const resultOverlay = document.getElementById('result-overlay');
+const resultText = document.getElementById('result-text');
 const combatLog = document.getElementById('combat-log');
 
 /**
@@ -221,34 +224,44 @@ function addLog(msg) {
  */
 function checkWin() {
     if (cpu.currentHp <= 0) {
-        victory("PARABÉNS! VOCÊ VENCEU!");
+        victory("PARABÉNS! VOCÊ VENCEU!", true);
         return true;
     }
     if (player.currentHp <= 0) {
-        victory("GAME OVER! A CPU VENCEU!");
+        victory("GAME OVER! A CPU VENCEU!", false);
         return true;
     }
     return false;
 }
 
-function victory(msg) {
+function victory(msg, isWin) {
     isBattleOver = true;
     addLog(`### ${msg} ###`);
+
+    // Show Overlay
+    resultOverlay.classList.remove('hidden');
+    resultText.textContent = isWin ? "VITÓRIA!" : "DERROTA!";
+    resultText.className = isWin ? "victory-text" : "defeat-text";
+
     skillsContainer.classList.add('hidden');
     resetBtn.classList.remove('hidden');
 }
 
-resetBtn.onclick = () => {
+function resetGame() {
     isBattleOver = false;
     player = null;
     cpu = null;
     battleScreen.classList.add('hidden');
+    resultOverlay.classList.add('hidden');
     selectionScreen.classList.remove('hidden');
     selectionScreen.classList.add('active');
     skillsContainer.classList.remove('hidden');
     resetBtn.classList.add('hidden');
     combatLog.innerHTML = '<p>A batalha começou!</p>';
-};
+}
+
+resetBtn.onclick = resetGame;
+overlayResetBtn.onclick = resetGame;
 
 // Initial Load
 window.onload = initSelection;
