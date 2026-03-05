@@ -1,48 +1,45 @@
 /**
- * Battle Arena Web - Game Logic
+ * Battle Arena Web - Clash Royale Style Logic
  */
 
 const characters = [
     {
         id: 1,
         nome: "Guerreiro",
-        hp: 120,
-        maxHp: 120,
-        def: 10,
+        hp: 1500,
+        maxHp: 1500,
+        def: 50,
         img: "assets/warrior.png",
-        description: "Mestre em armas pesadas e defesa impenetrável.",
         skills: [
-            { key: 'Q', nome: 'Corte Pesado', atkMin: 15, atkMax: 22, color: '#ff4d4d' },
-            { key: 'W', nome: 'Escudo Justiceiro', atkMin: 8, atkMax: 12, color: '#ffd700' },
-            { key: 'E', nome: 'Fúria Dracônica', atkMin: 25, atkMax: 35, color: '#ff8c00' }
+            { key: 'Q', nome: 'Espada de Elite', atkMin: 150, atkMax: 220, cost: 3, color: '#ff4d4d' },
+            { key: 'W', nome: 'Salto Impactante', atkMin: 200, atkMax: 300, cost: 5, color: '#ffd700' },
+            { key: 'E', nome: 'Fúria Real', atkMin: 350, atkMax: 500, cost: 7, color: '#ff8c00' }
         ]
     },
     {
         id: 2,
         nome: "Mago",
-        hp: 80,
-        maxHp: 80,
-        def: 5,
+        hp: 900,
+        maxHp: 900,
+        def: 20,
         img: "assets/mage.png",
-        description: "Poder elemental devastador, mas frágil em combate.",
         skills: [
-            { key: 'Q', nome: 'Seta de Gelo', atkMin: 18, atkMax: 25, color: '#4d94ff' },
-            { key: 'W', nome: 'Bola de Fogo', atkMin: 25, atkMax: 35, color: '#ff4b2b' },
-            { key: 'E', nome: 'Tempestade Arcana', atkMin: 40, atkMax: 55, color: '#8a2be2' }
+            { key: 'Q', nome: 'Seta de Gelo', atkMin: 200, atkMax: 300, cost: 3, color: '#4d94ff' },
+            { key: 'W', nome: 'Bola de Fogo', atkMin: 400, atkMax: 550, cost: 6, color: '#ff4b2b' },
+            { key: 'E', nome: 'Relâmpago', atkMin: 600, atkMax: 800, cost: 9, color: '#8a2be2' }
         ]
     },
     {
         id: 3,
         nome: "Arqueiro",
-        hp: 100,
-        maxHp: 100,
-        def: 7,
+        hp: 1100,
+        maxHp: 1100,
+        def: 30,
         img: "assets/archer.png",
-        description: "Precisão mortal com ataques críticos frequentes.",
         skills: [
-            { key: 'Q', nome: 'Tiro Rápido', atkMin: 12, atkMax: 18, color: '#32cd32' },
-            { key: 'W', nome: 'Flecha Venenosa', atkMin: 20, atkMax: 28, color: '#9932cc' },
-            { key: 'E', nome: 'Chuva de Flechas', atkMin: 30, atkMax: 45, color: '#ffd700' }
+            { key: 'Q', nome: 'Duo de Flechas', atkMin: 120, atkMax: 180, cost: 2, color: '#32cd32' },
+            { key: 'W', nome: 'Flecha Mágica', atkMin: 250, atkMax: 400, cost: 5, color: '#9932cc' },
+            { key: 'E', nome: 'Foguete Corredor', atkMin: 500, atkMax: 700, cost: 8, color: '#ffd700' }
         ]
     }
 ];
@@ -52,12 +49,15 @@ let player = null;
 let cpu = null;
 let isBattleOver = false;
 let isPlayerTurn = true;
+let currentElixir = 5;
+const MAX_ELIXIR = 10;
 
 // DOM Elements
 const selectionScreen = document.getElementById('selection-screen');
 const battleScreen = document.getElementById('battle-screen');
 const characterGrid = document.getElementById('character-grid');
 const skillsContainer = document.getElementById('skills-container');
+const elixirBar = document.getElementById('elixir-bar');
 const resetBtn = document.getElementById('reset-btn');
 const overlayResetBtn = document.getElementById('overlay-reset-btn');
 const resultOverlay = document.getElementById('result-overlay');
@@ -75,11 +75,9 @@ function initSelection() {
         card.innerHTML = `
             <img src="${char.img}" alt="${char.nome}">
             <h3>${char.nome}</h3>
-            <p style="margin-bottom: 1rem; font-size: 0.85rem;">${char.description}</p>
             <div class="char-stats">
                 <div class="stat-item">HP: <span>${char.maxHp}</span></div>
-                <div class="stat-item">ATK: <span>${char.atkMin}-${char.atkMax}</span></div>
-                <div class="stat-item" style="grid-column: span 2">DEFESA: <span>${char.def}</span></div>
+                <div class="stat-item">DEF: <span>${char.def}</span></div>
             </div>
         `;
         card.onclick = () => selectCharacter(char.id);
@@ -94,7 +92,6 @@ function selectCharacter(id) {
     const selected = characters.find(c => c.id === id);
     player = { ...selected, currentHp: selected.hp };
 
-    // CPU Selection (Random different from player)
     const otherChars = characters.filter(c => c.id !== id);
     const cpuSelected = otherChars[Math.floor(Math.random() * otherChars.length)];
     cpu = { ...cpuSelected, currentHp: cpuSelected.hp };
@@ -111,8 +108,8 @@ function startBattle() {
     battleScreen.classList.remove('hidden');
     isPlayerTurn = true;
     isBattleOver = false;
+    currentElixir = 5;
 
-    // UI Updates
     document.getElementById('p-name').textContent = player.nome;
     document.getElementById('p-portrait').src = player.img;
     document.getElementById('c-name').textContent = cpu.nome;
@@ -120,25 +117,47 @@ function startBattle() {
 
     renderSkills();
     updateHpBars();
-    addLog(`A batalha começou! **${player.nome}** vs **${cpu.nome}**`);
+    startElixirRegen();
+}
+
+function startElixirRegen() {
+    const regen = setInterval(() => {
+        if (isBattleOver) {
+            clearInterval(regen);
+            return;
+        }
+        if (currentElixir < MAX_ELIXIR) {
+            currentElixir = Math.min(MAX_ELIXIR, currentElixir + 0.1);
+            updateElixirUI();
+        }
+    }, 100);
+}
+
+function updateElixirUI() {
+    elixirBar.style.width = (currentElixir / MAX_ELIXIR) * 100 + '%';
+    // Check which cards are playable
+    const cards = document.querySelectorAll('.skill-card');
+    cards.forEach((card, index) => {
+        const skill = player.skills[index];
+        card.disabled = !isPlayerTurn || currentElixir < skill.cost;
+    });
 }
 
 /**
- * Render Skill Buttons
+ * Render Skill Cards
  */
 function renderSkills() {
     skillsContainer.innerHTML = '';
     player.skills.forEach(skill => {
-        const btn = document.createElement('button');
-        btn.className = 'skill-btn';
-        btn.id = `skill-${skill.key}`;
-        btn.innerHTML = `
-            <span class="hotkey">${skill.key}</span>
-            <span class="skill-name">${skill.nome}</span>
-            <span class="skill-atk">${skill.atkMin}-${skill.atkMax} ATK</span>
+        const card = document.createElement('button');
+        card.className = 'skill-card';
+        card.innerHTML = `
+            <div class="elixir-cost">${skill.cost}</div>
+            <div class="skill-icon" style="background-image: url('${player.img}')"></div>
+            <span class="skill-card-name">${skill.nome}</span>
         `;
-        btn.onclick = () => handlePlayerAction(skill);
-        skillsContainer.appendChild(btn);
+        card.onclick = () => handlePlayerAction(skill);
+        skillsContainer.appendChild(card);
     });
 }
 
@@ -147,24 +166,19 @@ function renderSkills() {
  */
 window.addEventListener('keydown', (e) => {
     if (!isPlayerTurn || isBattleOver) return;
-
     const key = e.key.toUpperCase();
     const skill = player.skills.find(s => s.key === key);
-
-    if (skill) {
+    if (skill && currentElixir >= skill.cost) {
+        e.preventDefault();
         handlePlayerAction(skill);
     }
-});
+}, true);
 
 function handlePlayerAction(skill) {
-    if (!isPlayerTurn || isBattleOver) return;
+    if (!isPlayerTurn || isBattleOver || currentElixir < skill.cost) return;
 
-    // Visual feedback for click/key
-    const btn = document.getElementById(`skill-${skill.key}`);
-    if (btn) {
-        btn.style.borderColor = skill.color;
-        setTimeout(() => btn.style.borderColor = '', 200);
-    }
+    currentElixir -= skill.cost;
+    updateElixirUI();
 
     executeAttack(player, cpu, skill);
 
@@ -183,23 +197,58 @@ function handlePlayerAction(skill) {
 
 function setTurn(playerTurn) {
     isPlayerTurn = playerTurn;
-    const btns = document.querySelectorAll('.skill-btn');
-    btns.forEach(b => b.disabled = !playerTurn);
+    updateElixirUI();
 }
 
 function executeAttack(attacker, defender, skill) {
     const rawAtk = Math.floor(Math.random() * (skill.atkMax - skill.atkMin + 1)) + skill.atkMin;
-    const damage = Math.max(2, rawAtk - defender.def);
+    const damage = Math.max(20, rawAtk - defender.def);
 
     defender.currentHp = Math.max(0, defender.currentHp - damage);
 
     updateHpBars();
-    addLog(`**${attacker.nome}** usou **${skill.nome}** e causou **${damage}** de dano!`);
 
-    // Visual feedback
     const defenderEl = defender === player ? document.getElementById('player-fighter') : document.getElementById('cpu-fighter');
-    defenderEl.classList.add('shake');
-    setTimeout(() => defenderEl.classList.remove('shake'), 500);
+    createImpactFX(defenderEl, skill.color);
+    triggerScreenEffects(defenderEl);
+}
+
+function createImpactFX(target, color) {
+    const portraitContainer = target.querySelector('.fighter-img');
+
+    // Flash white effect
+    portraitContainer.classList.add('flash-white');
+    setTimeout(() => portraitContainer.classList.remove('flash-white'), 300);
+
+    // Particles
+    const rect = portraitContainer.getBoundingClientRect();
+    for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.backgroundColor = color;
+        particle.style.width = Math.random() * 8 + 4 + 'px';
+        particle.style.height = particle.style.width;
+
+        const tx = (Math.random() - 0.5) * 200 + 'px';
+        const ty = (Math.random() - 0.5) * 200 + 'px';
+        particle.style.setProperty('--tx', tx);
+        particle.style.setProperty('--ty', ty);
+
+        particle.style.left = '50%';
+        particle.style.top = '50%';
+
+        portraitContainer.parentElement.appendChild(particle);
+        setTimeout(() => particle.remove(), 800);
+    }
+}
+
+function triggerScreenEffects(target) {
+    target.classList.add('shake');
+    document.body.classList.add('flash-white');
+    setTimeout(() => {
+        target.classList.remove('shake');
+        document.body.classList.remove('flash-white');
+    }, 500);
 }
 
 function updateHpBars() {
@@ -207,28 +256,16 @@ function updateHpBars() {
     const cPercent = (cpu.currentHp / cpu.maxHp) * 100;
 
     document.getElementById('p-hp-bar').style.width = pPercent + '%';
-    document.getElementById('p-hp-text').textContent = `${Math.ceil(player.currentHp)}/${player.maxHp}`;
-
     document.getElementById('c-hp-bar').style.width = cPercent + '%';
-    document.getElementById('c-hp-text').textContent = `${Math.ceil(cpu.currentHp)}/${cpu.maxHp}`;
 }
 
-function addLog(msg) {
-    const p = document.createElement('p');
-    p.innerHTML = msg.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    combatLog.prepend(p);
-}
-
-/**
- * Check Win Condition
- */
 function checkWin() {
     if (cpu.currentHp <= 0) {
-        victory("PARABÉNS! VOCÊ VENCEU!", true);
+        victory("VITÓRIA!", true);
         return true;
     }
     if (player.currentHp <= 0) {
-        victory("GAME OVER! A CPU VENCEU!", false);
+        victory("DERROTA!", false);
         return true;
     }
     return false;
@@ -236,15 +273,9 @@ function checkWin() {
 
 function victory(msg, isWin) {
     isBattleOver = true;
-    addLog(`### ${msg} ###`);
-
-    // Show Overlay
     resultOverlay.classList.remove('hidden');
     resultText.textContent = isWin ? "VITÓRIA!" : "DERROTA!";
     resultText.className = isWin ? "victory-text" : "defeat-text";
-
-    skillsContainer.classList.add('hidden');
-    resetBtn.classList.remove('hidden');
 }
 
 function resetGame() {
@@ -255,13 +286,9 @@ function resetGame() {
     resultOverlay.classList.add('hidden');
     selectionScreen.classList.remove('hidden');
     selectionScreen.classList.add('active');
-    skillsContainer.classList.remove('hidden');
-    resetBtn.classList.add('hidden');
-    combatLog.innerHTML = '<p>A batalha começou!</p>';
 }
 
 resetBtn.onclick = resetGame;
 overlayResetBtn.onclick = resetGame;
 
-// Initial Load
 window.onload = initSelection;
