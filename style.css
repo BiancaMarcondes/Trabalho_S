@@ -46,7 +46,7 @@ body {
 /* App Container (Vertical) */
 #app {
     width: 100%;
-    max-width: 480px;
+    max-width: 500px;
     height: 100vh;
     border-left: 1px solid var(--glass-border);
     border-right: 1px solid var(--glass-border);
@@ -323,21 +323,21 @@ header {
 
 /* CARDS HAND */
 .hand-container {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(15px);
-    padding: 0.8rem;
+    padding: 1rem 0.4rem;
     display: flex;
     justify-content: center;
-    gap: 0.4rem;
-    /* Reduced gap */
+    gap: 5px;
     border-top: 1px solid var(--glass-border);
+    width: 100%;
 }
 
 .skill-card {
-    width: 75px;
-    /* Smaller width for 5 cards */
-    height: 110px;
-    background: rgba(255, 255, 255, 0.05);
+    flex: 1;
+    max-width: 90px;
+    height: 130px;
+    background: rgba(255, 255, 255, 0.1);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     position: relative;
@@ -370,10 +370,12 @@ header {
 }
 
 .skill-card-name {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 800;
     text-transform: uppercase;
     text-align: center;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .elixir-cost {
