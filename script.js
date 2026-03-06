@@ -99,6 +99,7 @@ const overlayResetBtn = document.getElementById('overlay-reset-btn');
 const resultOverlay = document.getElementById('result-overlay');
 const resultText = document.getElementById('result-text');
 const combatLog = document.getElementById('combat-log');
+const bgMusic = document.getElementById('bg-music');
 
 /**
  * Initialize Character Selection
@@ -159,6 +160,12 @@ function startBattle() {
     renderSkills();
     updateHpBars();
     startCombatLoops();
+
+    // Start background music
+    if (bgMusic) {
+        bgMusic.volume = 0.3;
+        bgMusic.play().catch(e => console.log("Erro ao tocar música:", e));
+    }
 }
 
 function startCombatLoops() {
@@ -367,6 +374,12 @@ function victory(msg, isWin) {
     resultOverlay.classList.remove('hidden');
     resultText.textContent = isWin ? "VITÓRIA!" : "DERROTA!";
     resultText.className = isWin ? "victory-text" : "defeat-text";
+
+    // Stop background music
+    if (bgMusic) {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+    }
 }
 
 function resetGame() {
